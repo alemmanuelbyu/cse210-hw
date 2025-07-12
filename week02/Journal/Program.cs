@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+// Added Random Motivational quotes to inspire the Journal User
+
 public class Program
 {
     static void Main(string[] args)
@@ -45,7 +47,13 @@ public class Program
                 string filename = Console.ReadLine();
                 journal.LoadFromFile(filename);
             }
+            // Creativity
             else if (option == "5")
+            {
+                Console.WriteLine(promptGenerator.GetRandomQuote());
+
+            }
+            else if (option == "6")
             {
                 return;
             }
