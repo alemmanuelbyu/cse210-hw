@@ -1,9 +1,58 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class Program
+public class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        Journal journal = new Journal();
+        PromptGenerator promptGenerator = new PromptGenerator();
+
+        while (true)
+        {
+            Console.WriteLine("Please select one of the following choices:");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Save");
+            Console.WriteLine("4. Load");
+            Console.WriteLine("5. Quit");
+
+            Console.Write("What would you like to do: ");
+            string option = Console.ReadLine();
+
+            if (option == "1")
+            {
+                string prompt = promptGenerator.GetRandomPrompt();
+                Console.WriteLine(prompt);
+                Console.Write("Your response: ");
+                string response = Console.ReadLine();
+                journal.AddEntry(new Entry(DateTime.Now.ToShortDateString(), prompt, response));
+            }
+            else if (option == "2")
+            {
+                journal.DisplayAll();
+            }
+            else if (option == "3")
+            {
+                Console.Write("Enter the filename: ");
+                string filename = Console.ReadLine();
+                journal.SaveToFile(filename);
+            }
+            else if (option == "4")
+            {
+                Console.Write("Enter the filename: ");
+                string filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
+            }
+            else if (option == "5")
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option. Please choose again.");
+            }
+        }
     }
 }
