@@ -1,0 +1,4 @@
+300
+SimpleGoal,Attend sacrament merting,partake of the sacrament,100,True
+EternalGoal,Study the scripture,read the Book of Mormon,100
+ChecklistGoal,Attend Temple,perform ordinances,100,500,2,1
